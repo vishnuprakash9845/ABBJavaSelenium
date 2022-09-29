@@ -22,9 +22,8 @@ public class WD009_LocatingDynamicLink {
 				AUT_Lib.pauseSeconds(2);
 				driver.navigate().back();
 				AUT_Lib.pauseSeconds(2);
-				driver.findElement(By.linkText("Books")).click();
+				driver.findElement(By.partialLinkText("Kitchen")).click();
 				AUT_Lib.pauseSeconds(2);
-				
 			}
 			else
 			{
