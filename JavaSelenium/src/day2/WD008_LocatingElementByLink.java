@@ -24,6 +24,7 @@ public class WD008_LocatingElementByLink {
 				AUT_Lib.pauseSeconds(1);
 				driver.findElement(By.linkText("Videos")).click();
 				AUT_Lib.pauseSeconds(2);
+				
 			}
 			else
 			{
