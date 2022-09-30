@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import lib.AUT_Lib;
 
-public class WD0011_LocatingElementByRelativeXpath {
+public class WD0012_LocatingElementByCSS {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,8 +16,8 @@ public class WD0011_LocatingElementByRelativeXpath {
 			
 			if(driver.getTitle().matches("Bing"))
 			{
-				driver.findElement(By.xpath("//a[@aria-label='Settings and quick links']")).click();
-				driver.findElement(By.xpath("//input[@id='sb_form_q'][@name='q']")).sendKeys("ABB");
+				driver.findElement(By.cssSelector("input#sb_form_q")).sendKeys("ABB USA");
+				driver.findElement(By.cssSelector("input[id*='form_go']")).submit();
 				
 				AUT_Lib.pauseSeconds(4);
 			}

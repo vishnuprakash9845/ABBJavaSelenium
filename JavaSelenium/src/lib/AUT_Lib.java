@@ -2,6 +2,7 @@ package lib;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -54,6 +55,30 @@ public class AUT_Lib {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public static void SetCheckboxOn(By oby)
+	{
+		if(oDriver.findElement(oby).isSelected()==true)
+		{
+			System.out.println("Checkbox already checked");
+		}
+		else
+		{
+			oDriver.findElement(oby).click();
+		}
+	}
+	
+	public static void SelectRadioButton(By oby)
+	{
+		if(oDriver.findElement(oby).isSelected()==true)
+		{
+			System.out.println(oDriver.findElement(oby).getAttribute("value") +" : RadioButton already checked");
+		}
+		else
+		{
+			oDriver.findElement(oby).click();
 		}
 	}
 }
