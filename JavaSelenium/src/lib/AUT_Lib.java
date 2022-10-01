@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AUT_Lib {
 	public static WebDriver oDriver = null;
@@ -43,7 +46,7 @@ public class AUT_Lib {
 			}
 			oDriver.manage().deleteAllCookies();
 			oDriver.manage().window().maximize();
-			oDriver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+			oDriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 			oDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			//return oDriver;
 		}
@@ -81,4 +84,58 @@ public class AUT_Lib {
 			oDriver.findElement(oby).click();
 		}
 	}
+	
+	public static void PauseTillElementVisible(By oby, int iTimeout)
+	{
+		WebDriverWait oWait = new WebDriverWait(oDriver, iTimeout);
+		oWait.until(ExpectedConditions.visibilityOfElementLocated(oby));		
+	}
+	
+	public static void PauseTillAllElementsVisible(By oby, int iTimeout)
+	{
+		WebDriverWait oWait = new WebDriverWait(oDriver, iTimeout);
+		oWait.until(ExpectedConditions.visibilityOfAllElements(oDriver.findElements(oby)));		
+	}
+	
+	public static void CloseAlert()
+	{
+		try {
+			System.out.println("AUT_Lib : Alert text : "+oDriver.switchTo().alert().getText());
+			oDriver.switchTo().alert().dismiss();
+		}
+		catch(Exception e) {
+			System.out.println("Alert not found");
+		}
+	}
+	
+	public static void CloseAlert(WebDriver od)
+	{
+		try {
+			System.out.println("AUT_Lib : Alert text : "+oDriver.switchTo().alert().getText());
+			od.switchTo().alert().dismiss();
+		}
+		catch(Exception e) {
+			System.out.println("Alert not found");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
